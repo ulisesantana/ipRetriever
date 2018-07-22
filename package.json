@@ -1,0 +1,33 @@
+{
+  "name": "ipRetriever",
+  "version": "1.0.0",
+  "description": "Just an Express App with an endpoint to know which is my public IP.",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "npm run build && node build/index.js",
+    "start:babel": "babel-node src/index.js",
+    "test": "mocha --ui tdd --require babel-core/register 'test/**/*.test.js'",
+    "tdd": "npm test -- --watch",
+    "build": "babel src -d build",
+    "dev": "nodemon --watch src --exec babel-node src/index.js"
+  },
+  "keywords": [
+    "ip",
+    "get"
+  ],
+  "author": "Ulises Santana <ulisesantana@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mocha": "^4.0.1",
+    "morgan": "^1.9.0",
+    "pug": "^2.0.3",
+    "request-ip": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-preset-node8": "^1.2.0",
+    "babel-cli": "^6.26.0",
+    "nodemon": "^1.12.1"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "generator-node-tdd": {
+    "promptValues": {
+      "name": "Ulises Santana",
+      "email": "ulisesantana@gmail.com",
+      "moduleVersion": "1.0.0",
+      "moduleLicense": "MIT"
+    }
+  }
+}
