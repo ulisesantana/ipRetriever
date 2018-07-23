@@ -1,3 +1,4 @@
-node_modules/
-.vs-code/
-.idea/
+node_modules
+.vscode
+.idea
+build
