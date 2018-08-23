@@ -1,18 +1,16 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import requestIp from 'request-ip';
+import forwarded from 'forwarded-for';
 import JSON from 'circular-json';
 
-
 export default function Server() {
-  const PORT = 3000;
+  const PORT = 6000;
   const log = console.log;
   const api = express();
 
   // Setting up the API
   api.use(logger('dev'));
-  api.use(requestIp.mw());
   api.use(bodyParser.urlencoded({
     extended: false,
     type: 'application/x-www-form-urlencoded'
@@ -23,7 +21,8 @@ export default function Server() {
 
   // API Routes
   api.get('/', (req, res, next) => {
-    res.render('ip', { title: 'Your IP Address', ip: req.clientIp});
+    const address = forwarded(req, req.headers);
+    res.render('ip', { title: 'Your IP Address', ip: address.ip});
   });
   api.get('/request', (req, res, next) => {
     res.status(200).send(JSON.stringify(req, null, 2));
