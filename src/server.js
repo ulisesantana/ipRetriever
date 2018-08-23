@@ -5,7 +5,7 @@ import forwarded from 'forwarded-for';
 import JSON from 'circular-json';
 
 export default function Server() {
-  const PORT = 6000;
+  const PORT = 3000;
   const log = console.log;
   const api = express();
 
