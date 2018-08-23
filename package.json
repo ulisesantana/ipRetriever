@@ -21,10 +21,11 @@
     "body-parser": "^1.18.3",
     "circular-json": "^0.5.5",
     "express": "^4.16.3",
+    "forwarded-for": "^1.0.1",
     "mocha": "^4.0.1",
     "morgan": "^1.9.0",
-    "original-url": "^1.2.1",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "request-ip": "^2.1.1"
   },
   "devDependencies": {
     "babel-preset-node8": "^1.2.0",

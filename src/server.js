@@ -1,8 +1,9 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import originalURL from 'original-url';
+import requestIp from 'request-ip';
 import JSON from 'circular-json';
+
 
 export default function Server() {
   const PORT = 3000;
@@ -11,6 +12,7 @@ export default function Server() {
 
   // Setting up the API
   api.use(logger('dev'));
+  api.use(requestIp.mw());
   api.use(bodyParser.urlencoded({
     extended: false,
     type: 'application/x-www-form-urlencoded'
@@ -21,8 +23,7 @@ export default function Server() {
 
   // API Routes
   api.get('/', (req, res, next) => {
-    const url = originalURL(req);
-    res.render('ip', { title: 'Your IP Address', ip: url.full});
+    res.render('ip', { title: 'Your IP Address', ip: req.clientIp});
   });
   api.get('/request', (req, res, next) => {
     res.status(200).send(JSON.stringify(req, null, 2));
