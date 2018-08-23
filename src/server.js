@@ -1,7 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import forwarded from 'forwarded-for';
+import originalURL from 'original-url';
 import JSON from 'circular-json';
 
 export default function Server() {
@@ -21,8 +21,8 @@ export default function Server() {
 
   // API Routes
   api.get('/', (req, res, next) => {
-    const address = forwarded(req, req.headers);
-    res.render('ip', { title: 'Your IP Address', ip: address.ip});
+    const url = originalURL(req);
+    res.render('ip', { title: 'Your IP Address', ip: url.full});
   });
   api.get('/request', (req, res, next) => {
     res.status(200).send(JSON.stringify(req, null, 2));
